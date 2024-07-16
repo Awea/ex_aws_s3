@@ -105,6 +105,8 @@ if Code.ensure_loaded?(SweetXml) do
       {:ok, %{resp | body: parsed_body}}
     end
 
+    def parse_complete_multipart_upload(val), do: val
+
     def parse_list_multipart_uploads({:ok, %{body: xml} = resp}) do
       parsed_body =
         SweetXml.xpath(xml, ~x"//ListMultipartUploadsResult",
@@ -187,6 +189,8 @@ if Code.ensure_loaded?(SweetXml) do
 
       {:ok, %{resp | body: parsed_body}}
     end
+
+    def parse_bucket_object_versions(val), do: val
   end
 else
   defmodule ExAws.S3.Parsers do
